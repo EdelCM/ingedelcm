@@ -11,6 +11,10 @@ Route::get('/proyectos', function () {
     return view('proyectos');
 });
 
+Route::get('/bingo', function () {
+    return view('bingo');
+})->name('bingo');
+
 Route::get('/contacto', function () {
     return view('contacto');
 });

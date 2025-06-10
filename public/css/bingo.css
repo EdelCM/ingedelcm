@@ -1,0 +1,132 @@
+/* 🎨 Estilo general del fondo */
+body {
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 🎯 Centrar el contenedor del cartón y los botones */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* 🧩 Estilo de la tabla de cartón */
+#bingoCardContainer table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  text-align: center;
+  background-color: #fff;
+}
+
+#bingoCardContainer th,
+#bingoCardContainer td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  width: 80px;
+  height: 60px;
+}
+
+#bingoCardContainer th {
+  background-color: #007acc;
+  color: white;
+  font-size: 1.3rem;
+}
+
+#bingoCardContainer td {
+  background-color: #e8f0fe;
+}
+
+/* 💬 Estilo especial para celda FREE */
+#bingoCardContainer td.free {
+  background-color: #ffc107;
+  font-weight: bold;
+  color: #000;
+}
+
+/* 🔘 Botones alineados horizontalmente */
+.text-center .btn {
+  margin: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+/* 🖱️ Efectos hover */
+.btn:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* 🔙 Botón de volver */
+.btn-back {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #007acc;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  text-decoration: underline;
+}
+
+/* 🔧 Ajuste de inputs del cartón personalizado */
+.bingo-input {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-size: 1.1rem;
+  text-align: center;
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Asegura que las celdas no se agranden */
+.custom-card td {
+  padding: 0;
+  width: 80px;
+  height: 60px;
+}
+
+/* 📐 Ajuste visual para inputs dentro de celdas */
+.cell-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* 🟨 Estilo para celda FREE */
+.free-space {
+  background-color: #ffc107;
+  font-weight: bold;
+}
+
+/* 📏 Centrado general */
+#bingoCardContainer {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+  #bingoCardContainer th,
+  #bingoCardContainer td {
+    padding: 8px;
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+}
