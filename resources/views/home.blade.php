@@ -41,12 +41,12 @@
   <p>Explora los proyectos gratuitos que he desarrollado:</p>
   <ul>
     <li>
-      <a href="{{ route('bingo') }}" target="_blank">
+      <a href="{{ route('bingo') }}">
         <strong>Generador de </strong> – cartones de Bingo
     </a>
     </li>
     <li>
-      <a href="#" target="_blank">
+      <a href="{{ url('/alwayswin') }}">
         🧩 <strong>Always Win</strong> – Juego de azar con enfoque social
       </a>
     </li>

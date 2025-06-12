@@ -1,0 +1,218 @@
+/* Estilos base */
+:root {
+    --color-primario: #2c3e50;
+    --color-secundario: #3498db;
+    --color-exito: #2ecc71;
+    --color-error: #e74c3c;
+    --color-fondo: #f9f9f9;
+    --color-texto: #333;
+    --color-borde: #ddd;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    padding: 20px;
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    color: #ffffff; /* Blanco para mejor contraste */
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(90deg, #003366, #0066cc);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+/* 📝 Ajuste específico para el título */
+header h1 {
+  color: #ffffff; /* También blanco */
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* 💬 Ajuste para las instrucciones */
+.instrucciones {
+  color: #f1f1f1; /* Gris claro */
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+h1 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.instrucciones {
+    color: #ffffff;
+}
+
+/* Estilos para los jugadores */
+.jugadores-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.jugador {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.jugador label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.jugador input,
+.jugador select {
+    padding: 8px;
+    border: 1px solid var(--color-borde);
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.jugador input:focus,
+.jugador select:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+}
+
+/* Estilos para los botones */
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.boton-primario,
+.boton-secundario {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.boton-primario {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.boton-primario:hover {
+    background-color: #2980b9;
+}
+
+.boton-secundario {
+    background-color: var(--color-borde);
+    color: var(--color-texto);
+}
+
+.boton-secundario:hover {
+    background-color: #ccc;
+}
+
+.boton-primario:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Estilos para el resultado */
+.resultado {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    text-align: center;
+    display: none;
+}
+
+.resultado h2 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.ganador {
+    font-size: 24px;
+    color: var(--color-exito);
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Mensajes de error */
+.mensaje-error {
+    color: var(--color-error);
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Estilos mejorados para los dropdowns */
+.numero-jugador:valid {
+    border: 2px solid #4CAF50;
+    background-color: #f0f8ff;
+}
+
+.numero-jugador option:disabled {
+    color: #ccc;
+    font-style: italic;
+    text-decoration: line-through;
+    background-color: #f8f8f8;
+}
+
+.numero-jugador option:checked {
+    font-weight: bold;
+    background-color: #e7f3fe;
+}
+
+/* 🔙 Estilo del botón de volver */
+.btn-volver {
+  display: inline-block;
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #0066cc;
+  text-decoration: none;
+  background-color: #e0f0ff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.1);
+}
+
+.btn-volver:hover {
+  background-color: #cce7ff;
+  color: #003366;
+  transform: scale(1.03);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .jugadores-container {
+        grid-template-columns: 1fr;
+    }
+}

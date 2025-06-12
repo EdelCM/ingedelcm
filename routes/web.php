@@ -18,3 +18,7 @@ Route::get('/bingo', function () {
 Route::get('/contacto', function () {
     return view('contacto');
 });
+
+Route::get('/alwayswin', function () {
+    return view('alwayswin');
+});
