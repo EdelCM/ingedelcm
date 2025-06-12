@@ -12,7 +12,7 @@
 </a>
 <div class="contenedor">
     <header>
-        <h1>Acierta el Número 2</h1>
+        <h1>Acierta el Número</h1>
         <p class="instrucciones">Cada jugador debe seleccionar un número único entre 0 y 9. ¡El que acierte al número ganador gana!</p>
     </header>
 
