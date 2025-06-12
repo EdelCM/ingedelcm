@@ -50,6 +50,11 @@
         🧩 <strong>Always Win</strong> – Juego de azar con enfoque social
       </a>
     </li>
+    <li>
+        <a href="{{ url('/caracterizacion') }}">
+        🧾<strong> Caracterización</strong>
+        </a>
+    </li>
   </ul>
   <button onclick="alert('Gracias por visitarme')"> 💬 Haz clic para contactarme </button>
 </section>
