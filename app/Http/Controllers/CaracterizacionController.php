@@ -10,7 +10,8 @@ class CaracterizacionController extends Controller
      // 🧾 Mostrar el formulario
     public function create()
     {
-        return view('caracterizacion.formulario');
+        $tipos_documento = DB::table('tipos_documento')->orderBy('id')->get();
+        return view('caracterizacion.formulario', compact('tipos_documento'));
     }
 
     // ✅ Procesar el formulario y guardar en base de datos

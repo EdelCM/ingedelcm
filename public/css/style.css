@@ -10,6 +10,21 @@ body {
   line-height: 1.6;
 }
 
+/* Botón de Regresar al inicio caracterizacion formulario */
+.btn-regresar {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #007acc;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+}
+
+.btn-regresar:hover {
+  text-decoration: underline;
+}
+
+
 /* -----------------------------
    ESTILO DEL ENCABEZADO <header>
 ----------------------------- */

@@ -6,6 +6,15 @@
     border-radius: 15px;
 }
 
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
 form input {
     display: block;
     margin-bottom: 12px;
@@ -25,3 +34,4 @@ form button {
 form button:hover {
     background: #0056b3;
 }
+

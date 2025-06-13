@@ -3,6 +3,10 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/caracterizacion.css') }}">
 
+<a href="{{ url('/') }}" class="btn-regresar">
+    ← Regresar a la Página Principal
+</a>
+
 <div class="form-container">
     <h2>🧾 Registro de Caracterización</h2>
 
@@ -18,13 +22,35 @@
 
         <fieldset>
             <legend>📄 Datos de la Persona</legend>
-            <input name="tipo_documento" placeholder="Tipo de documento" required>
-            <input name="numero_documento" placeholder="Número de documento" required>
+
+            <label for="tipo_documento">Tipo de documento:</label>
+            <select name="tipo_documento" id="tipo_documento" required>
+                @foreach($tipos_documento as $tipo)
+                    <option value="{{ $tipo->nombre }}" {{ $tipo->nombre == 'Cédula de Ciudadanía' ? 'selected' : '' }}>
+                    {{ $tipo->nombre }}
+                    </option>
+                @endforeach
+            </select>
+
+            <label for="numero_documento">Número de documento*</label>
+            <input type="text" name="numero_documento" id="numero_documento"
+                placeholder="Ej: 123456789" required
+                pattern="^\d{7,13}$" minlength="7" maxlength="13"
+                title="Debe contener solo números entre 7 y 13 dígitos">
+
+
             <input name="primer_nombre" placeholder="Primer nombre" required>
             <input name="segundo_nombre" placeholder="Segundo nombre">
             <input name="primer_apellido" placeholder="Primer apellido" required>
             <input name="segundo_apellido" placeholder="Segundo apellido">
-            <input name="celular" placeholder="Celular" required>
+
+            <label for="celular">Celular*</label>
+            <input type="text" name="celular" id="celular"
+                placeholder="Ej: 3001234567" required
+                pattern="^\d{7,13}$" minlength="7" maxlength="13"
+                title="Debe contener solo números entre 7 y 13 dígitos">
+
+
             <input name="correo" placeholder="Correo">
             <input name="fecha_nacimiento" type="date">
             <input name="pais_nacimiento" placeholder="País" value="Colombia" required>
@@ -36,17 +62,15 @@
             <input name="direccion_residencia" placeholder="Dirección" required>
         </fieldset>
 
-        <fieldset>
-            <legend>🏪 Establecimiento Comercial</legend>
-            <input name="nombre_establecimiento" placeholder="Nombre del establecimiento" required>
-            <input name="tipo_establecimiento" placeholder="Tipo (tienda, panadería, etc.)" required>
-            <input name="ciudad_establecimiento" placeholder="Ciudad" required>
-            <input name="direccion_establecimiento" placeholder="Dirección" required>
-            <input name="telefono_establecimiento" placeholder="Teléfono">
-            <input name="email_establecimiento" placeholder="Correo">
-        </fieldset>
-
         <button type="submit">📤 Registrar</button>
+
+        <!--Agrega un botón para ir al formulario de establecimiento comercial-->
+        <div style="margin-top: 1.5rem;">
+            <a href="{{ route('caracterizacion.establecimiento.create') }}" class="btn-registro">
+                ➕ Registrar Establecimiento Comercial
+            </a>
+        </div>
+
     </form>
 </div>
 @endsection
