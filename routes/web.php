@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\CaracterizacionController;
+
+Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
+Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
 
 Route::get('/', function () {
     return view('home');
