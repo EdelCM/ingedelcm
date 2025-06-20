@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\TipoDocumento;
 
 class CaracterizacionController extends Controller
 {
      // 🧾 Mostrar el formulario
     public function create()
-    {
-        $tipos_documento = DB::table('tipos_documento')->orderBy('id')->get();
-        return view('caracterizacion.formulario', compact('tipos_documento'));
-    }
+{
+    $tipos_documento = TipoDocumento::orderBy('id', 'asc')->get();
+
+    return view('caracterizacion.formularioCaracterizacion', compact('tipos_documento'));
+}
 
     // ✅ Procesar el formulario y guardar en base de datos
     public function store(Request $request)

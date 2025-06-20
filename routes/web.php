@@ -5,18 +5,18 @@ use Livewire\Volt\Volt;
 use App\Http\Controllers\CaracterizacionController;
 use App\Http\Controllers\CaracterizacionEstablecimientoController;
 
-Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
-Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
+/*Route::get('/caracterizacion', [CaracterizacionController::class, 'create']);*/
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
+
+Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
 
 Route::get('/caracterizacion/establecimiento', [CaracterizacionEstablecimientoController::class, 'create'])->name('caracterizacion.establecimiento.create');
 Route::post('/caracterizacion/establecimiento', [CaracterizacionEstablecimientoController::class, 'store'])->name('caracterizacion.establecimiento.store');
 
-
-
+Route::get('/', function () {
+    return view('home');
+});
 
 // en routes/web.php
 Route::get('/conexion-db', function () {
@@ -44,3 +44,7 @@ Route::get('/contacto', function () {
 Route::get('/alwayswin', function () {
     return view('alwayswin');
 });
+
+/*Route::get('/caracterizacion', function () {
+    return view('caracterizacion.formularioCaracterizacion');
+});*/

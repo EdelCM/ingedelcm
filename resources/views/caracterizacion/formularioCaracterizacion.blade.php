@@ -8,7 +8,7 @@
 </a>
 
 <div class="form-container">
-    <h2>🧾 Registro de Caracterización</h2>
+    <h2 class="form-titulo">🧾 Registro de Caracterización</h2>
 
     @if(session('success'))
         <div class="success">{{ session('success') }}</div>
@@ -17,7 +17,7 @@
         <div class="error">{{ session('error') }}</div>
     @endif
 
-    <form action="{{ route('caracterizacion.store') }}" method="POST">
+    <form action="{{ route('caracterizacion.store') }}" method="POST" id="formCaracterizacion">
         @csrf
 
         <fieldset>
@@ -32,17 +32,20 @@
                 @endforeach
             </select>
 
-            <label for="numero_documento">Número de documento*</label>
-            <input type="text" name="numero_documento" id="numero_documento"
-                placeholder="Ej: 123456789" required
-                pattern="^\d{7,13}$" minlength="7" maxlength="13"
-                title="Debe contener solo números entre 7 y 13 dígitos">
+                <label for="numero_documento">Número de documento *</label>
+                <input type="text" name="numero_documento" id="numero_documento" required pattern="[0-9]{7,13}" title="Solo números entre 7 y 13 dígitos" maxlength="13" inputmode="numeric" placeholder="Ej: 123456789">
 
+                <label for="primer_nombre">Primer Nombre *</label>
+                <input type="text" name="primer_nombre" id="primer_nombre" required pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
 
-            <input name="primer_nombre" placeholder="Primer nombre" required>
-            <input name="segundo_nombre" placeholder="Segundo nombre">
-            <input name="primer_apellido" placeholder="Primer apellido" required>
-            <input name="segundo_apellido" placeholder="Segundo apellido">
+                <label for="segundo_nombre">Segundo Nombre</label>
+                <input type="text" name="segundo_nombre" id="segundo_nombre" pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
+
+                <label for="primer_apellido">Primer Apellido *</label>
+                <input type="text" name="primer_apellido" id="primer_apellido" required pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
+
+                <label for="segundo_apellido">Segundo Apellido</label>
+                <input type="text" name="segundo_apellido" id="segundo_apellido" pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
 
             <label for="celular">Celular*</label>
             <input type="text" name="celular" id="celular"
@@ -62,7 +65,9 @@
             <input name="direccion_residencia" placeholder="Dirección" required>
         </fieldset>
 
-        <button type="submit">📤 Registrar</button>
+        <div class="centrado">
+            <button type="submit" class="btn-enviar">📤 Registrar</button>
+        </div>
 
         <!--Agrega un botón para ir al formulario de establecimiento comercial-->
         <div style="margin-top: 1.5rem;">
@@ -73,4 +78,7 @@
 
     </form>
 </div>
+
+<!-- JS personalizado -->
+<script src="{{ asset('js/validaciones.js') }}"></script>
 @endsection
