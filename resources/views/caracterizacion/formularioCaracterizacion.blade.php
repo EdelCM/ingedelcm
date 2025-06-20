@@ -56,9 +56,30 @@
 
             <input name="correo" placeholder="Correo">
             <input name="fecha_nacimiento" type="date">
-            <input name="pais_nacimiento" placeholder="País" value="Colombia" required>
-            <input name="departamento_nacimiento" placeholder="Departamento nacimiento" required>
-            <input name="ciudad_nacimiento" placeholder="Ciudad nacimiento" required>
+
+                <label for="pais_nacimiento">País de nacimiento *</label>
+<select name="pais_nacimiento" id="pais_nacimiento" required>
+    @foreach($paises as $pais)
+        <option value="{{ $pais->id }}" {{ $pais->nombre == 'Colombia' ? 'selected' : '' }}>
+            {{ $pais->nombre }}
+        </option>
+    @endforeach
+</select>
+
+    <label for="departamento_nacimiento">Departamento de nacimiento *</label>
+    <select name="departamento_nacimiento" id="departamento_nacimiento" required>
+        <option value="">Seleccione un departamento</option>
+        @foreach($departamentos as $departamento)
+            @if($departamento->pais_id == $paisDefault->id)
+                <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+            @endif
+        @endforeach
+    </select>
+
+    <label for="ciudad_nacimiento">Ciudad de nacimiento *</label>
+    <select name="ciudad_nacimiento" id="ciudad_nacimiento" required>
+        <option value="">Seleccione una ciudad</option>
+    </select>
             <input name="departamento_residencia" placeholder="Departamento residencia" required>
             <input name="ciudad_residencia" placeholder="Ciudad residencia" required>
             <input name="barrio_residencia" placeholder="Barrio" required>
@@ -80,5 +101,6 @@
 </div>
 
 <!-- JS personalizado -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{{ asset('js/validaciones.js') }}"></script>
 @endsection

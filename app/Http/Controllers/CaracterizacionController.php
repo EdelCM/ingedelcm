@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\TipoDocumento;
+use App\Models\Pais;
+use App\Models\Ciudad;
+use App\Models\Departamento;
 
 class CaracterizacionController extends Controller
 {
@@ -12,8 +15,16 @@ class CaracterizacionController extends Controller
     public function create()
 {
     $tipos_documento = TipoDocumento::orderBy('id', 'asc')->get();
+    $paises = Pais::all();
+    $paisDefault = Pais::where('nombre', 'Colombia')->first();
+    $departamentos = Departamento::where('pais_id', $paisDefault->id)->get();
 
-    return view('caracterizacion.formularioCaracterizacion', compact('tipos_documento'));
+    return view('caracterizacion.formularioCaracterizacion', compact(
+        'tipos_documento',
+        'paises',
+        'paisDefault',
+        'departamentos'
+    ));
 }
 
     // ✅ Procesar el formulario y guardar en base de datos
@@ -79,5 +90,10 @@ class CaracterizacionController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'Error al guardar: ' . $e->getMessage());
         }
+    }
+    public function getCiudades($departamento_id)
+    {
+        $ciudades = Ciudad::where('departamento_id', $departamento_id)->get();
+        return response()->json($ciudades);
     }
 }

@@ -9,6 +9,11 @@ use App\Http\Controllers\CaracterizacionEstablecimientoController;
 
 Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
 
+Route::get('/get-departamentos', [CaracterizacionController::class, 'getPais']);
+Route::get('/get-departamentos', [CaracterizacionController::class, 'getDepartamentos']);
+Route::get('/ciudades-por-departamento/{departamento_id}', [CaracterizacionController::class, 'getCiudades']);
+
+
 Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
 
 Route::get('/caracterizacion/establecimiento', [CaracterizacionEstablecimientoController::class, 'create'])->name('caracterizacion.establecimiento.create');

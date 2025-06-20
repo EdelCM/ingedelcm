@@ -1,6 +1,61 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Validación para campos que solo deben contener letras
   const soloLetras = ['primer_nombre', 'segundo_nombre', 'primer_apellido', 'segundo_apellido'];
+  const paisSelect = document.getElementById('pais_nacimiento');
+    const departamentoSelect = document.getElementById('departamento_nacimiento');
+    const ciudadSelect = document.getElementById('ciudad_nacimiento');
+
+     if (paisSelect) {
+        paisSelect.addEventListener('change', function() {
+            const paisId = this.value;
+
+            // Limpiar y deshabilitar selects dependientes
+            departamentoSelect.innerHTML = '<option value="">Seleccione un departamento</option>';
+            ciudadSelect.innerHTML = '<option value="">Seleccione una ciudad</option>';
+            ciudadSelect.disabled = true;
+
+            if (paisId) {
+                fetch(`/get-departamentos?pais_id=${paisId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(departamento => {
+                            const option = document.createElement('option');
+                            option.value = departamento.id;
+                            option.textContent = departamento.nombre;
+                            departamentoSelect.appendChild(option);
+                        });
+                        departamentoSelect.disabled = false;
+                    });
+            } else {
+                departamentoSelect.disabled = true;
+            }
+        });
+    }
+
+    if (departamentoSelect) {
+        departamentoSelect.addEventListener('change', function() {
+            const departamentoId = this.value;
+
+            // Limpiar select de ciudades
+            ciudadSelect.innerHTML = '<option value="">Seleccione una ciudad</option>';
+
+            if (departamentoId) {
+                fetch(`/get-ciudades?departamento_id=${departamentoId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(ciudad => {
+                            const option = document.createElement('option');
+                            option.value = ciudad.id;
+                            option.textContent = ciudad.nombre;
+                            ciudadSelect.appendChild(option);
+                        });
+                        ciudadSelect.disabled = false;
+                    });
+            } else {
+                ciudadSelect.disabled = true;
+            }
+        });
+    }
 
   soloLetras.forEach(id => {
     const input = document.getElementById(id);
@@ -61,3 +116,27 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+$(document).ready(function () {
+        $('#departamento_nacimiento').on('change', function () {
+            var departamentoID = $(this).val();
+            var $ciudadSelect = $('#ciudad_nacimiento');
+
+            if (departamentoID) {
+                $.ajax({
+                    url: '/ciudades-por-departamento/' + departamentoID,
+                    type: 'GET',
+                    success: function (data) {
+                        $ciudadSelect.empty().prop('disabled', false);
+                        $ciudadSelect.append('<option value="">Seleccione una ciudad</option>');
+                        data.forEach(function (ciudad) {
+                            $ciudadSelect.append('<option value="' + ciudad.id + '">' + ciudad.nombre + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $ciudadSelect.empty().append('<option value="">Seleccione una ciudad</option>').prop('disabled', true);
+            }
+        });
+    });
+
