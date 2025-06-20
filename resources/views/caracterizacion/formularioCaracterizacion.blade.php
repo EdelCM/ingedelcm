@@ -33,19 +33,19 @@
             </select>
 
                 <label for="numero_documento">Número de documento *</label>
-                <input type="text" name="numero_documento" id="numero_documento" required pattern="[0-9]{7,13}" title="Solo números entre 7 y 13 dígitos" maxlength="13" inputmode="numeric" placeholder="Ej: 123456789">
+                <input type="text" name="numero_documento" id="numero_documento" required pattern="[0-9]{7,13}" title="Solo números entre 7 y 13 dígitos" maxlength="13" inputmode="numeric" placeholder="Ej: 1234567">
 
                 <label for="primer_nombre">Primer Nombre *</label>
-                <input type="text" name="primer_nombre" id="primer_nombre" required pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
+                <input type="text" name="primer_nombre" id="primer_nombre" required pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas" style="text-transform: uppercase">
 
                 <label for="segundo_nombre">Segundo Nombre</label>
                 <input type="text" name="segundo_nombre" id="segundo_nombre" pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
 
                 <label for="primer_apellido">Primer Apellido *</label>
-                <input type="text" name="primer_apellido" id="primer_apellido" required pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
+                <input type="text" name="primer_apellido" id="primer_apellido" pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas"        style="text-transform: uppercase" >
 
                 <label for="segundo_apellido">Segundo Apellido</label>
-                <input type="text" name="segundo_apellido" id="segundo_apellido" pattern="[A-ZÁÉÍÓÚÑ ]+" title="Solo letras en mayúsculas">
+                <input type="text" name="segundo_apellido" id="segundo_apellido" pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas" required        style="text-transform: uppercase">
 
             <label for="celular">Celular*</label>
             <input type="text" name="celular" id="celular"
