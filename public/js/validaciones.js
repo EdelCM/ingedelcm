@@ -5,6 +5,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const departamentoSelect = document.getElementById('departamento_nacimiento');
     const ciudadSelect = document.getElementById('ciudad_nacimiento');
 
+    const departamentoResidencia = document.getElementById('departamento_residencia');
+    const ciudadResidencia = document.getElementById('ciudad_residencia');
+
+if (departamentoResidencia && ciudadResidencia) {
+    departamentoResidencia.addEventListener('change', function () {
+      const departamentoId = this.value;
+
+      ciudadResidencia.innerHTML = '<option value="">Seleccione una ciudad</option>';
+      ciudadResidencia.disabled = true;
+
+      if (departamentoId) {
+        fetch(`/get-ciudades?departamento_id=${departamentoId}`)
+          .then(response => response.json())
+          .then(data => {
+            data.forEach(ciudad => {
+              const option = document.createElement('option');
+              option.value = ciudad.id;
+              option.textContent = ciudad.nombre;
+              ciudadResidencia.appendChild(option);
+            });
+            ciudadResidencia.disabled = false;
+          })
+          .catch(error => {
+            console.error('Error al obtener ciudades:', error);
+          });
+      }
+    });
+  }
+
      if (paisSelect) {
         paisSelect.addEventListener('change', function() {
             const paisId = this.value;

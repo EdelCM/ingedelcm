@@ -80,8 +80,19 @@
     <select name="ciudad_nacimiento" id="ciudad_nacimiento" required>
         <option value="">Seleccione una ciudad</option>
     </select>
-            <input name="departamento_residencia" placeholder="Departamento residencia" required>
-            <input name="ciudad_residencia" placeholder="Ciudad residencia" required>
+            <label for="departamento_residencia">Departamento de residencia *</label>
+<select name="departamento_residencia" id="departamento_residencia" required>
+    <option value="">Seleccione un departamento</option>
+    @foreach($departamentos as $departamento)
+        <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+    @endforeach
+</select>
+
+<label for="ciudad_residencia">Ciudad de residencia *</label>
+<select name="ciudad_residencia" id="ciudad_residencia" required disabled>
+    <option value="">Seleccione una ciudad</option>
+</select>
+
             <input name="barrio_residencia" placeholder="Barrio" required>
             <input name="direccion_residencia" placeholder="Dirección" required>
         </fieldset>

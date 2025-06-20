@@ -11,6 +11,8 @@ Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->na
 
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getPais']);
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getDepartamentos']);
+Route::get('/get-ciudades', [CaracterizacionController::class, 'getCiudades']);
+
 Route::get('/ciudades-por-departamento/{departamento_id}', [CaracterizacionController::class, 'getCiudades']);
 
 

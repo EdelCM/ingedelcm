@@ -26,6 +26,11 @@ class CaracterizacionController extends Controller
         'departamentos'
     ));
 }
+public function getCiudades(Request $request)
+{
+    $ciudades = Ciudad::where('departamento_id', $request->departamento_id)->get();
+    return response()->json($ciudades);
+}
 
     // ✅ Procesar el formulario y guardar en base de datos
     public function store(Request $request)
@@ -90,10 +95,5 @@ class CaracterizacionController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'Error al guardar: ' . $e->getMessage());
         }
-    }
-    public function getCiudades($departamento_id)
-    {
-        $ciudades = Ciudad::where('departamento_id', $departamento_id)->get();
-        return response()->json($ciudades);
     }
 }
