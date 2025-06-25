@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Volt;
 use App\Http\Controllers\CaracterizacionController;
 use App\Http\Controllers\CaracterizacionEstablecimientoController;
@@ -8,15 +9,13 @@ use App\Http\Controllers\CaracterizacionEstablecimientoController;
 /*Route::get('/caracterizacion', [CaracterizacionController::class, 'create']);*/
 
 Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
+Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
 
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getPais']);
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getDepartamentos']);
+
 Route::get('/get-ciudades', [CaracterizacionController::class, 'getCiudades']);
-
 Route::get('/ciudades-por-departamento/{departamento_id}', [CaracterizacionController::class, 'getCiudades']);
-
-
-Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->name('caracterizacion.store');
 
 Route::get('/caracterizacion/establecimiento', [CaracterizacionEstablecimientoController::class, 'create'])->name('caracterizacion.establecimiento.create');
 Route::post('/caracterizacion/establecimiento', [CaracterizacionEstablecimientoController::class, 'store'])->name('caracterizacion.establecimiento.store');
@@ -51,7 +50,3 @@ Route::get('/contacto', function () {
 Route::get('/alwayswin', function () {
     return view('alwayswin');
 });
-
-/*Route::get('/caracterizacion', function () {
-    return view('caracterizacion.formularioCaracterizacion');
-});*/

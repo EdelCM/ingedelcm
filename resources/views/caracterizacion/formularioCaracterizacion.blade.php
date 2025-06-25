@@ -45,7 +45,7 @@
                 <input type="text" name="primer_apellido" id="primer_apellido" pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas"        style="text-transform: uppercase" >
 
                 <label for="segundo_apellido">Segundo Apellido</label>
-                <input type="text" name="segundo_apellido" id="segundo_apellido" pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas" required        style="text-transform: uppercase">
+                <input type="text" name="segundo_apellido" id="segundo_apellido" pattern="[A-ZÁÉÍÓÚÑ\s]+" title="Solo letras en mayúsculas" style="text-transform: uppercase">
 
             <label for="celular">Celular*</label>
             <input type="text" name="celular" id="celular"
@@ -113,5 +113,12 @@
 
 <!-- JS personalizado -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- ✅ SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Archivo para alertas y popup -->
+<script src="{{ asset('js/alertas.js') }}"></script>
+
 <script src="{{ asset('js/validaciones.js') }}"></script>
 @endsection
