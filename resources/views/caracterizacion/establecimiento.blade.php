@@ -1,54 +1,74 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-<a href="{{ url('/') }}" class="btn-regresar">← Regresar a la Página Principal</a>
+    <a href="{{ url('/') }}" class="btn-regresar">← Regresar a la Página Principal</a>
 
-<div class="formulario-contenedor">
-    <h2 class="form-titulo">🏪 Registro de Establecimiento Comercial</h2>
+    <div class="formulario-contenedor">
+        <h2 class="form-titulo">🏪 Registro de Establecimiento Comercial</h2>
 
-    <form action="{{ route('caracterizacion.establecimiento.store') }}" method="POST" class="formulario-box">
-        @csrf
+        <!--Validaciones -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Errores:</strong>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <div class="campo-form">
-            <label for="persona_id">ID de la persona</label>
-            <input type="number" name="persona_id" required>
-        </div>
+        <form action="{{ route('caracterizacion.establecimiento.store') }}" method="POST" class="formulario-box">
+            @csrf
 
-        <div class="campo-form">
-            <label for="nombre_establecimiento">Nombre del establecimiento</label>
-            <input type="text" name="nombre_establecimiento" required>
-        </div>
+            {{-- Datos del establecimiento --}}
+            <div class="campo-form">
+                <label for="nit_establecimiento">NIT del Establecimiento</label>
+                <input type="text" name="nit_establecimiento" required maxlength="20">
+            </div>
 
-        <div class="campo-form">
-            <label for="tipo_establecimiento">Tipo</label>
-            <input type="text" name="tipo_establecimiento" required>
-        </div>
+            <div class="campo-form">
+                <label for="nombre_establecimiento">Nombre del Establecimiento</label>
+                <input type="text" name="nombre_establecimiento" required maxlength="100">
+            </div>
 
-        <div class="campo-form">
-            <label for="ciudad">Ciudad</label>
-            <input type="text" name="ciudad" required>
-        </div>
+            <div class="campo-form">
+                <label for="tipo_establecimiento">Tipo Establecimiento</label>
+                <input type="text" name="tipo_establecimiento" required maxlength="50">
+            </div>
 
-        <div class="campo-form">
-            <label for="direccion">Dirección</label>
-            <input type="text" name="direccion" required>
-        </div>
+            <div class="campo-form">
+                <label for="ciudad">Ciudad</label>
+                <input type="text" name="ciudad" required maxlength="50">
+            </div>
 
-        <div class="campo-form">
-            <label for="telefono_contacto">Teléfono</label>
-            <input type="text" name="telefono_contacto">
-        </div>
+            <div class="campo-form">
+                <label for="direccion">Dirección</label>
+                <input type="text" name="direccion" required>
+            </div>
 
-        <div class="campo-form">
-            <label for="email_contacto">Correo</label>
-            <input type="email" name="email_contacto">
-        </div>
+            <div class="campo-form">
+                <label for="telefono_contacto">Teléfono</label>
+                <input type="text" name="telefono_contacto" maxlength="20">
+            </div>
 
-        <div class="campo-form centrado">
-            <button type="submit" class="btn-enviar">📤 Registrar Establecimiento</button>
-        </div>
-    </form>
-</div>
+            <div class="campo-form">
+                <label for="email_contacto">Correo</label>
+                <input type="email" name="email_contacto" maxlength="100">
+            </div>
+
+            <div class="campo-form centrado">
+                <button type="submit" class="btn-enviar">📤 Registrar Establecimiento</button>
+            </div>
+        </form>
+    </div>
+
 @endsection
+@push('scripts')
+    <!-- Incluir SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Incluir nuestro archivo de alertas -->
+    <script src="{{ asset('js/alertas.js') }}"></script>
+@endpush
