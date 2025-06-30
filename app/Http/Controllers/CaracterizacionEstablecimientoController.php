@@ -40,9 +40,7 @@ class CaracterizacionEstablecimientoController extends Controller
 
             DB::commit();
 
-            return redirect()
-                ->back()
-                ->with('swal-success', 'Establecimiento registrado correctamente con NIT: ' . $establecimiento->nit_establecimiento);
+            return redirect()->route('caracterizacion.establecimiento.create')->with('swal-success', '¡Establecimiento registrado exitosamente!');
         } catch (\Exception $e) {
             DB::rollBack();
             Log::error('Error al crear establecimiento: ' . $e->getMessage(), [

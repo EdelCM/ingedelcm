@@ -67,8 +67,9 @@
 
 @endsection
 @push('scripts')
-    <!-- Incluir SweetAlert2 -->
+    <!-- SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- Incluir nuestro archivo de alertas -->
+    <!-- Archivos de lógica -->
     <script src="{{ asset('js/alertas.js') }}"></script>
+    <script src="{{ asset('js/validaciones.js') }}"></script>
 @endpush
