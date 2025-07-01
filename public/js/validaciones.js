@@ -8,6 +8,56 @@ document.addEventListener('DOMContentLoaded', function () {
     const departamentoResidencia = document.getElementById('departamento_residencia');
     const ciudadResidencia = document.getElementById('ciudad_residencia');
 
+    // ========= VALIDACIÓN PARA NIT DE ESTABLECIMIENTO =========
+  const nitEstablecimiento = document.querySelector('input[name="nit_establecimiento"]');
+
+  if (nitEstablecimiento) {
+    // Agregar placeholder con ejemplo
+    nitEstablecimiento.placeholder = "Ejemplo: 123456789-0";
+
+    // Función de validación
+    function validarNIT(nit) {
+      const regex = /^[0-9]{5,10}-[0-9]{1}$/;
+      return regex.test(nit);
+    }
+
+    // Validar al perder foco
+    nitEstablecimiento.addEventListener('blur', function() {
+      const valor = this.value.trim();
+
+      if (valor && !validarNIT(valor)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Formato de NIT incorrecto',
+          text: 'Por favor ingresa el NIT en el formato correcto: solo números y un guion. Ejemplo: 123456789-0',
+          confirmButtonText: 'Entendido'
+        });
+        this.focus();
+        this.value = ''; // Limpiar el campo si no es válido
+      }
+    });
+
+    // Validación en tiempo real mientras escribe
+    nitEstablecimiento.addEventListener('input', function(e) {
+      // Permitir solo números y guiones
+      this.value = this.value.replace(/[^0-9-]/g, '');
+
+      // Limitar a 12 caracteres (10 números + guion + 1 número)
+      if (this.value.length > 12) {
+        this.value = this.value.slice(0, 12);
+      }
+
+      // Auto-insertar el guion después de 9-10 dígitos
+      const digits = this.value.replace(/-/g, '');
+      if (digits.length > 9 && this.value.indexOf('-') === -1) {
+        const firstPart = digits.slice(0, 9);
+        const secondPart = digits.slice(9);
+        this.value = `${firstPart}-${secondPart}`;
+      }
+    });
+  }
+  // ========= FIN VALIDACIÓN PARA NIT DE ESTABLECIMIENTO =========
+
 if (departamentoResidencia && ciudadResidencia) {
     departamentoResidencia.addEventListener('change', function () {
       const departamentoId = this.value;

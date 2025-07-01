@@ -26,7 +26,9 @@
             {{-- Datos del establecimiento --}}
             <div class="campo-form">
                 <label for="nit_establecimiento">NIT del Establecimiento</label>
-                <input type="text" name="nit_establecimiento" required maxlength="20">
+                <input type="text" name="nit_establecimiento" required maxlength="20" placeholder="Ejemplo: 123456789-0"
+                    title="Formato: 5-10 números, guion y 1 dígito verificador">
+                <small class="form-text text-muted">Formato: 123456789-0 (solo números y un guion)</small>
             </div>
 
             <div class="campo-form">

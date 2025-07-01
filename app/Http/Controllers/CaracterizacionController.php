@@ -81,7 +81,7 @@ class CaracterizacionController extends Controller
                 'direccion_residencia' => $request->direccion_residencia
             ]);
 
-            return redirect()->back()->with('success', true);
+            return redirect()->back()->with('swal-success', true);
         } catch (\Throwable $e) {
             Log::error('❌ Error al registrar persona: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Error inesperado al registrar: ' . $e->getMessage());

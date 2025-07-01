@@ -22,7 +22,18 @@ class CaracterizacionEstablecimientoController extends Controller
     {
         // Validación más robusta
         $validatedData = $request->validate([
-            'nit_establecimiento' => 'required|string|max:20|unique:establecimientos,nit_establecimiento',
+            'nit_establecimiento'  => [
+                'required',
+                'string',
+                'max:20',
+                'unique:establecimientos,nit_establecimiento',
+                function ($attribute, $value, $fail) {
+                    if (!preg_match('/^[0-9]{5,10}-[0-9]{1}$/', $value)) {
+                        $fail('El formato del NIT es incorrecto. Debe contener solo números y un guion (Ejemplo: 123456789-0).');
+                    }
+                }
+            ],
+
             'nombre_establecimiento' => 'required|string|max:100',
             'tipo_establecimiento' => 'required|string|max:50',
             'ciudad' => 'required|string|max:50',
