@@ -34,13 +34,26 @@ class CaracterizacionEstablecimientoController extends Controller
                 }
             ],
 
-            'nombre_establecimiento' => 'required|string|max:100',
-            'tipo_establecimiento' => 'required|string|max:50',
+            'nombre_establecimiento' => [
+                'required',
+                'string',
+                'max:100',
+                'regex:/^[A-ZÁÉÍÓÚÑÜ 0-9.,-]+$/'
+            ],
+            'tipo_establecimiento' => [
+                'required',
+                'string',
+                'max:50',
+                'regex:/^[A-ZÁÉÍÓÚÑÜ ]+$/'
+            ],
             'ciudad' => 'required|string|max:50',
             'direccion' => 'required|string',
-            'telefono_contacto' => 'nullable|string|max:20',
+            'telefono_contacto' => ['nullable', 'regex:/^\d{7,13}$/'],
             'email_contacto' => 'nullable|email|max:100'
-        ]);
+        ], [
+        'nombre_establecimiento.regex' => 'El nombre solo puede contener letras mayúsculas, números, espacios y los símbolos . , -',
+        'tipo_establecimiento.regex' => 'El tipo de establecimiento solo puede contener letras mayúsculas y espacios'
+    ]);
 
         try {
             DB::beginTransaction();

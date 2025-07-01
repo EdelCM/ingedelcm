@@ -8,7 +8,46 @@ document.addEventListener('DOMContentLoaded', function () {
     const departamentoResidencia = document.getElementById('departamento_residencia');
     const ciudadResidencia = document.getElementById('ciudad_residencia');
 
-    // ========= VALIDACIÓN PARA NIT DE ESTABLECIMIENTO =========
+    // ========= INICIO - VALIDACIÓN PARA CAMPOS DE TEXTO EN MAYÚSCULAS EN FORMULARIO ESTABLECIMIENTO =========
+  const camposMayusculas = ['nombre_establecimiento', 'tipo_establecimiento'];
+
+  camposMayusculas.forEach(nombreCampo => {
+    const input = document.querySelector(`input[name="${nombreCampo}"]`);
+
+    if (input) {
+      // Convertir a mayúsculas al escribir
+      input.addEventListener('input', function () {
+        this.value = this.value
+          .toUpperCase()
+          .replace(/[^A-ZÁÉÍÓÚÑÜ 0-9.,-]/g, ''); // Permitimos números, puntos, comas y guiones para nombres comerciales
+      });
+
+      // Validar teclas permitidas
+      input.addEventListener('keypress', function (e) {
+        const key = e.key;
+        // Permitir letras, números, espacios, algunos símbolos y teclas de control
+        if (!/^[A-ZÁÉÍÓÚÑÜ0-9 .,-]$|Backspace|Delete|ArrowLeft|ArrowRight|Tab$/i.test(key)) {
+          e.preventDefault();
+        }
+      });
+
+      // Validar al perder foco
+      input.addEventListener('blur', function() {
+        if (this.value.trim() === '') {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Campo requerido',
+            text: `El campo ${input.labels[0].textContent} no puede estar vacío`,
+            confirmButtonText: 'Entendido'
+          });
+          this.focus();
+        }
+      });
+    }
+  });
+  // ========= FIN VALIDACIÓN PARA CAMPOS DE TEXTO EN MAYÚSCULAS EN FORMULARIO ESTABLECIMIENTO =========
+
+    // ========= INICIO - VALIDACIÓN PARA NIT DE ESTABLECIMIENTO =========
   const nitEstablecimiento = document.querySelector('input[name="nit_establecimiento"]');
 
   if (nitEstablecimiento) {
@@ -195,6 +234,25 @@ if (departamentoResidencia && ciudadResidencia) {
     });
   }
 });
+
+// Validación para teléfono de contacto (igual que celular)
+const telefono = document.getElementById('telefono_contacto');
+if (telefono) {
+  telefono.addEventListener('keypress', function (e) {
+    const key = e.key;
+    if (!/^[0-9]$/.test(key)) {
+      e.preventDefault();
+    }
+  });
+
+  telefono.addEventListener('input', function () {
+    this.value = this.value.replace(/[^0-9]/g, '');
+    if (this.value.length > 13) {
+      this.value = this.value.slice(0, 13);
+    }
+  });
+}
+
 
 $(document).ready(function () {
         $('#departamento_nacimiento').on('change', function () {
