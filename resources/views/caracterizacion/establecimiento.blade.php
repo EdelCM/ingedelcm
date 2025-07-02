@@ -46,8 +46,22 @@
             </div>
 
             <div class="campo-form">
-                <label for="ciudad">Ciudad</label>
-                <input type="text" name="ciudad" required maxlength="50">
+                <label for="departamento_id">Departamento *</label>
+                <select name="departamento_id" id="departamento_establecimiento" required>
+                    <option value="">Seleccione un departamento</option>
+                    @foreach ($departamentos as $departamento)
+                        @if ($departamento->pais_id == $paisDefault->id)
+                            <option value="{{ $departamento->id }}">{{ $departamento->nombre }}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="campo-form">
+                <label for="ciudad_id">Ciudad *</label>
+                <select name="ciudad_id" id="ciudad_establecimiento" required disabled>
+                    <option value="">Seleccione una ciudad</option>
+                </select>
             </div>
 
             <div class="campo-form">

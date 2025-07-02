@@ -13,12 +13,23 @@ class Establecimiento extends Model
         'nit_establecimiento',
         'nombre_establecimiento',
         'tipo_establecimiento',
-        'ciudad',
+        'departamento_id',
+        'ciudad_id',
         'direccion',
         'telefono_contacto',
         'email_contacto',
         'fecha_registro'
     ];
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
+
+    public function ciudad()
+    {
+        return $this->belongsTo(Ciudad::class);
+    }
 
     /**
      * Relación muchos a muchos con Persona a través de la tabla pivote
@@ -28,8 +39,8 @@ class Establecimiento extends Model
     public function personas(): BelongsToMany
     {
         return $this->belongsToMany(Persona::class, 'persona_establecimiento')
-                    ->withPivot('tipo_relacion', 'created_at', 'updated_at')
-                    ->withTimestamps();
+            ->withPivot('tipo_relacion', 'created_at', 'updated_at')
+            ->withTimestamps();
     }
 
     /**

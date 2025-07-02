@@ -15,7 +15,11 @@ class CaracterizacionEstablecimientoController extends Controller
     public function create()
     {
         $personas = \App\Models\Persona::all();
-        return view('caracterizacion.establecimiento');
+        $paises = DB::table('paises')->get();
+        $paisDefault = DB::table('paises')->where('nombre', 'Colombia')->first();
+        $departamentos = DB::table('departamentos')->get();
+
+        return view('caracterizacion.establecimiento', compact('paises', 'departamentos', 'paisDefault'));
     }
 
     public function store(Request $request)
@@ -46,14 +50,15 @@ class CaracterizacionEstablecimientoController extends Controller
                 'max:50',
                 'regex:/^[A-ZÁÉÍÓÚÑÜ ]+$/'
             ],
-            'ciudad' => 'required|string|max:50',
+            'departamento_id' => 'required|exists:departamentos,id',
+            'ciudad_id' => 'required|exists:ciudades,id,departamento_id,' . $request->departamento_id,
             'direccion' => 'required|string',
             'telefono_contacto' => ['nullable', 'regex:/^\d{7,13}$/'],
             'email_contacto' => 'nullable|email|max:100'
         ], [
-        'nombre_establecimiento.regex' => 'El nombre solo puede contener letras mayúsculas, números, espacios y los símbolos . , -',
-        'tipo_establecimiento.regex' => 'El tipo de establecimiento solo puede contener letras mayúsculas y espacios'
-    ]);
+            'nombre_establecimiento.regex' => 'El nombre solo puede contener letras mayúsculas, números, espacios y los símbolos . , -',
+            'tipo_establecimiento.regex' => 'El tipo de establecimiento solo puede contener letras mayúsculas y espacios'
+        ]);
 
         try {
             DB::beginTransaction();

@@ -14,6 +14,12 @@ Route::post('/caracterizacion', [CaracterizacionController::class, 'store'])->na
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getPais']);
 Route::get('/get-departamentos', [CaracterizacionController::class, 'getDepartamentos']);
 
+Route::get('/get-ciudades', function (Illuminate\Http\Request $request) {
+    $departamento_id = $request->query('departamento_id');
+    $ciudades = DB::table('ciudades')->where('departamento_id', $departamento_id)->get();
+    return response()->json($ciudades);
+});
+
 Route::get('/get-ciudades', [CaracterizacionController::class, 'getCiudades']);
 Route::get('/ciudades-por-departamento/{departamento_id}', [CaracterizacionController::class, 'getCiudades']);
 
