@@ -7,6 +7,13 @@
         ← Regresar a la Página Principal
     </a>
 
+    <!-- Botón para ir al listado de personas -->
+    <div class="contenedor-boton-listado">
+        <a href="{{ route('personas.index') }}" class="btn-ver-listado">
+            📋 Ver Listado de Personas Registradas
+        </a>
+    </div>
+
     <div class="form-container">
         <h2 class="form-titulo">🧾 Registro de Caracterización</h2>
 
@@ -16,6 +23,8 @@
         @if (session('error'))
             <div class="error">{{ session('error') }}</div>
         @endif
+
+
 
         <form action="{{ route('caracterizacion.store') }}" method="POST" id="formCaracterizacion">
             @csrf
@@ -113,13 +122,6 @@
             </div>
 
         </form>
-
-        <!-- Botón para ir al listado de personas -->
-        <div style="margin-top: 1.5rem;">
-            <a href="{{ route('personas.index') }}" class="btn btn-primary">
-                📋 Ver Listado de Personas Registradas
-            </a>
-        </div>
 
     </div>
 

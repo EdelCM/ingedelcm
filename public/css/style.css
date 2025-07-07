@@ -252,3 +252,48 @@ button:hover{
   transform: scale(1.05);          /* Agrandamiento suave */
 }
 
+/*
+* Estilo para el boton ir al select para ver listado de personas registradas
+*/
+.contenedor-boton-listado {
+    text-align: left;
+    margin: 1rem 2rem 0 2rem;
+}
+
+.boton-alineado-formulario {
+    width: 100%;
+    max-width: 700px; /* igual o similar al ancho del formulario */
+    margin: 0 auto 1rem auto; /* centrado con margen inferior */
+    display: flex;
+    justify-content: flex-start; /* alineado a la izquierda del formulario */
+}
+
+.btn-ver-listado {
+    display: inline-block;
+    padding: 0.5rem 1.2rem;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-ver-listado:hover {
+    background: linear-gradient(45deg, #0056b3, #004080);
+    color: white; /* 🔒 Forzar texto blanco en hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-ver-listado:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/*
+*Fin
+*/
