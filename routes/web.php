@@ -3,8 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\CaracterizacionController;
 use App\Http\Controllers\CaracterizacionEstablecimientoController;
+
+Route::get('/personas', [PersonaController::class, 'index'])->name('personas.index');
+Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
+
 
 /*Route::get('/caracterizacion', [CaracterizacionController::class, 'create']);*/
 

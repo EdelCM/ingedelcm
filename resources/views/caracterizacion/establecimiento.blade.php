@@ -25,21 +25,21 @@
 
             {{-- Datos del establecimiento --}}
             <div class="campo-form">
-                <label for="nit_establecimiento">NIT del Establecimiento</label>
+                <label for="nit_establecimiento">NIT del Establecimiento *</label>
                 <input type="text" name="nit_establecimiento" required maxlength="20" placeholder="Ejemplo: 123456789-0"
                     title="Formato: 5-10 números, guion y 1 dígito verificador">
                 <small class="form-text text-muted">Formato: 123456789-0 (solo números y un guion)</small>
             </div>
 
             <div class="campo-form">
-                <label for="nombre_establecimiento">Nombre del Establecimiento</label>
+                <label for="nombre_establecimiento">Nombre del Establecimiento *</label>
                 <input type="text" name="nombre_establecimiento" required maxlength="100"
                     placeholder="Ejemplo COMERCIAL S.A." title="Solo letras mayúsculas, números y los símbolos . , -">
                 <small class="form-text text-muted">Solo mayúsculas, números y los símbolos . , -</small>
             </div>
 
             <div class="campo-form">
-                <label for="tipo_establecimiento">Tipo Establecimiento</label>
+                <label for="tipo_establecimiento">Tipo Establecimiento *</label>
                 <input type="text" name="tipo_establecimiento" required maxlength="50" placeholder="Ejemplo RESTAURANTE"
                     title="Solo letras mayúsculas y espacios">
                 <small class="form-text text-muted">Solo letras mayúsculas y espacios</small>
@@ -65,12 +65,12 @@
             </div>
 
             <div class="campo-form">
-                <label for="direccion">Dirección</label>
+                <label for="direccion">Dirección *</label>
                 <input type="text" name="direccion" placeholder="Dirección" required>
             </div>
 
             <div class="campo-form">
-                <label for="telefono_contacto">Teléfono</label>
+                <label for="telefono_contacto">Teléfono *</label>
                 <input type="text" name="telefono_contacto" id="telefono_contacto" placeholder="Ej: 3001234567"
                     pattern="^\d{7,13}$" minlength="7" maxlength="13"
                     title="Debe contener solo números entre 7 y 13 dígitos">
@@ -78,7 +78,7 @@
             </div>
 
             <div class="campo-form">
-                <label for="email_contacto">Correo</label>
+                <label for="email_contacto">Correo *</label>
                 <input type="email" name="email_contacto" maxlength="100" placeholder="Correo: Email@gmail.com">
             </div>
 
