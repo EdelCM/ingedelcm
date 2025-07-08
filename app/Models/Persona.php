@@ -36,8 +36,23 @@ class Persona extends Model
     public function establecimientos(): BelongsToMany
     {
         return $this->belongsToMany(Establecimiento::class, 'persona_establecimiento')
-                    ->withPivot('tipo_relacion', 'created_at', 'updated_at')
-                    ->withTimestamps();
+            ->withPivot('tipo_relacion', 'created_at', 'updated_at')
+            ->withTimestamps();
+    }
+
+    public function paisNacimiento()
+    {
+        return $this->belongsTo(Pais::class, 'pais_nacimiento', 'id');
+    }
+
+    public function departamentoResidencia()
+    {
+        return $this->belongsTo(Departamento::class, 'departamento_residencia', 'id');
+    }
+
+    public function ciudadResidencia()
+    {
+        return $this->belongsTo(Ciudad::class, 'ciudad_residencia', 'id');
     }
 
     /**
@@ -62,10 +77,10 @@ class Persona extends Model
     public static function buscar($query)
     {
         return self::where('numero_documento', 'like', "%$query%")
-                    ->orWhere('primer_nombre', 'like', "%$query%")
-                    ->orWhere('primer_apellido', 'like', "%$query%")
-                    ->orWhere('celular', 'like', "%$query%")
-                    ->limit(10)
-                    ->get();
+            ->orWhere('primer_nombre', 'like', "%$query%")
+            ->orWhere('primer_apellido', 'like', "%$query%")
+            ->orWhere('celular', 'like', "%$query%")
+            ->limit(10)
+            ->get();
     }
 }

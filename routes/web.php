@@ -10,6 +10,7 @@ use App\Http\Controllers\CaracterizacionEstablecimientoController;
 Route::get('/personas', [PersonaController::class, 'index'])->name('personas.index');
 Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
 
+Route::get('/personas', [CaracterizacionController::class, 'index'])->name('personas.index');
 
 /*Route::get('/caracterizacion', [CaracterizacionController::class, 'create']);*/
 

@@ -31,6 +31,21 @@ class CaracterizacionController extends Controller
         ));
     }
 
+    public function index(Request $request)
+    {
+        $query = Persona::with(['paisNacimiento', 'departamentoResidencia', 'ciudadResidencia'])
+            ->orderBy('primer_nombre')
+            ->orderBy('primer_apellido');
+
+        if ($request->ajax()) {
+            return datatables()->eloquent($query)->toJson();
+        }
+
+        $personas = $query->paginate(10);
+
+        return view('personas.index', compact('personas'));
+    }
+
     // ⚙️ Obtener ciudades por departamento (AJAX)
     public function getCiudades(Request $request)
     {
