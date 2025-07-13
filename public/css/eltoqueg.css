@@ -1,0 +1,197 @@
+/* Estilos principales */
+body {
+    background-color: #0d0d0d;
+    color: #e6e6e6;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: radial-gradient(circle, #1a1a1a, #000);
+    animation: fadeIn 2s ease-in-out;
+}
+
+.hero-section img {
+    width: 150px;
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+    border-radius: 50%;
+    border: 3px solid #d4af37;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+}
+
+.hero-section h1 {
+    color: #d4af37;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-section p.lead {
+    color: #ccc;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* Botón de registro */
+.btn-register-now {
+    background: linear-gradient(135deg, #d4af37, #8b0000);
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.btn-register-now:hover {
+    background: linear-gradient(135deg, #8b0000, #d4af37);
+    transform: translateY(-3px);
+}
+
+/* Carrusel Horizontal */
+#carouselToqueG {
+    max-width: 100%; /* Ocupa todo el ancho */
+    margin: 20px auto;
+}
+
+.carousel-inner {
+    display: flex; /* Alinea las imágenes en fila */
+    overflow-x: auto; /* Permite scroll horizontal si no caben */
+    scroll-snap-type: x mandatory; /* Efecto de snap al desplazar */
+    border-radius: 12px;
+}
+
+.text-container {
+    margin-bottom: 15px; /* Separa texto de imagen */
+}
+
+.text-container h5 {
+    color: #d4af37;
+    font-size: 1.2rem;
+}
+
+.text-container p {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+    min-width: 300px;
+    text-align: center; /* Centra todo el contenido */
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.carousel-item img {
+    height: 250px; /* Altura fija */
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+    transition: 0.4s;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 0 0 12px 12px;
+    position: static; /* Texto debajo de la imagen, no superpuesto */
+    color: #f0e6d2;
+    text-align: center;
+}
+
+/* Carrusel Horizontal: Texto arriba, imagen abajo */
+.carousel-horizontal {
+    display: flex;
+    gap: 20px; /* Espacio entre elementos */
+    padding: 20px 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+/* Features */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 0;
+    background-color: #1a1a1a;
+}
+
+.feature-box {
+    background-color: #111;
+    border: 1px solid #333;
+    color: #f2f2f2;
+    width: 280px;
+    margin: 15px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.feature-box:hover {
+    background-color: #2a0a1f;
+    transform: scale(1.05);
+}
+
+/* Botón de regreso */
+.btn-regresar-dark {
+    display: inline-block;
+    margin: 40px auto;
+    padding: 12px 25px;
+    background-color: #1a1a1a;
+    color: #d4af37;
+    border: 1px solid #444;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-regresar-dark:hover {
+    background-color: #2a0a1f;
+    color: #fff;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .feature-box {
+        width: 90%;
+    }
+    .carousel-item {
+        flex: 0 0 100%; /* 1 imagen por vez */
+    }
+}

@@ -7,6 +7,15 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\CaracterizacionController;
 use App\Http\Controllers\CaracterizacionEstablecimientoController;
 
+// Ruta para EL TOGE G
+Route::get('/el-toque-g', function () {
+    return view('el-toque-g'); // Esto mostrará la vista el-toque-g.blade.php
+});
+
+Route::get('/register', function () {
+    return view('auth.register'); // O la vista que tengas para registro
+})->name('register');
+
 Route::get('/personas', [PersonaController::class, 'index'])->name('personas.index');
 Route::get('/caracterizacion', [CaracterizacionController::class, 'create'])->name('caracterizacion.create');
 
